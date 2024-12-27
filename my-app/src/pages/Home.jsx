@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import { fetchEventData, fetchShowData } from '../middleWare/middleWare';
+import { fetchEventData, fetchShowData } from '../middleWare/middleWare.js';
 
 import Navbar from '../component/navbar';
 import Show from '../component/show';

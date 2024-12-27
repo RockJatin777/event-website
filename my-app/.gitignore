@@ -25,3 +25,7 @@ dist-ssr
 
 # Ignore sensitive files
 my-app/src/middleWare/middleWare.js
+
+# ignore environment variable
+.env
+

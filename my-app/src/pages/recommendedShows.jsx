@@ -3,7 +3,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import Navbar from "../component/navbar";
 import Show from "../component/show";
 
-import { fetchShowData } from "../middleWare/middleWare";
+import { fetchShowData } from "../middleWare/middleWare.js";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
