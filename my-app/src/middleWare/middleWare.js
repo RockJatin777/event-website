@@ -4,12 +4,13 @@ import eventSlice from "../redux/eventSlice";
 const action = ShowsSlice.actions;
 const eventAction = eventSlice.actions;
 
-const apiUrl = import.meta.env.VITE_AZURE_KEY_1;
+const apiUrl1 = import.meta.env.VITE_AZURE_KEY_1;
+const apiUrl2 = import.meta.env.VITE_AZURE_KEY_2;
 
 export const fetchShowData = async(dispatch) => {
     try{
         dispatch(action.showsLoading());
-        const resp = await fetch(`https://gg-backend-assignment.azurewebsites.net/api/Events?code=${apiUrl}==&type=reco`);
+        const resp = await fetch(apiUrl1);
         const data = await resp.json();
         dispatch(action.gettingShowsData(data.events));
     }
@@ -22,7 +23,7 @@ export const fetchShowData = async(dispatch) => {
 export const fetchEventData = async(dispatch) => {
         try {
             dispatch(eventAction.eventsLoading());
-            const resp = await fetch(`https://gg-backend-assignment.azurewebsites.net/api/Events?code=${apiUrl}==&page=1&type=upcoming`);
+            const resp = await fetch(apiUrl2);
             const data = await resp.json();
             dispatch(eventAction.gettingEventData(data.events));
         }
