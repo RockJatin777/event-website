@@ -3,6 +3,9 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import Navbar from "../component/navbar";
 import Event from "../component/event";
 
+import Cookies from 'js-cookie'
+import { useNavigate } from "react-router-dom";
+
 import { fetchEventData } from "../middleWare/middleWare.js";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -12,10 +15,15 @@ const UpcomingEvents = () => {
     const {eventData, eventLoading, eventError} = useSelector(store => store.eventState);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const user = Cookies.get('userCred')
+        if(user === undefined){
+            navigate('/login')
+        }
         dispatch(fetchEventData)
-    }, [dispatch])
+    }, [dispatch, navigate])
 
     return(
     <>

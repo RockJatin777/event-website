@@ -2,6 +2,8 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 
 import Navbar from "../component/navbar";
 import Show from "../component/show";
+import Cookies from 'js-cookie'
+import { useNavigate } from "react-router-dom";
 
 import { fetchShowData } from "../middleWare/middleWare.js";
 
@@ -11,10 +13,15 @@ import { useEffect } from "react";
 const RecommendedShows = () => {
     const {showData, showLoading, showError} = useSelector((store) => store.showsState);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const user = Cookies.get('userCred')
+        if(user === undefined){
+            navigate('/login')
+        }
         dispatch(fetchShowData)
-    }, [dispatch]);
+    }, [dispatch, navigate]);
 
     return(
     <>

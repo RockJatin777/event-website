@@ -1,6 +1,8 @@
 import { useSelector, useDispatch} from 'react-redux'
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom';
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -18,12 +20,18 @@ const Home = () => {
     const {eventData, eventLoading, eventError} = useSelector(store => store.eventState);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     console.log(showData)
     
     useEffect(function() {
+        const user = Cookies.get('userCred')
+        if(user === undefined){
+            navigate('/login')
+        }
         dispatch(fetchShowData)
         dispatch(fetchEventData)
-    }, [dispatch]);
+        
+    }, [dispatch, navigate]);
 
     return(
         <>

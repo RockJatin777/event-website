@@ -3,6 +3,7 @@ import UserSilce from "../redux/userSlice";
 import { useSelector, useDispatch} from 'react-redux';
 import Cookies from 'js-cookie';
 
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -44,7 +45,7 @@ const SignUp = () => {
             dispatch(action.setEmail(""))
             dispatch(action.setPassword(""))
             dispatch(action.setError(""))
-            navigate('/');
+            navigate('/login');
         }
     }
 
