@@ -42,10 +42,11 @@ const SignUp = () => {
                 password
             };
             Cookies.set('userCred', JSON.stringify(userDetails), {expires: 7});
+            navigate('/login');
             dispatch(action.setEmail(""))
             dispatch(action.setPassword(""))
             dispatch(action.setError(""))
-            navigate('/login');
+            
         }
     }
 
