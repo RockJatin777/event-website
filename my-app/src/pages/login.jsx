@@ -24,11 +24,13 @@ const Login = () => {
     const onSubmitCred = event => {
         event.preventDefault();
         const user = Cookies.get('userCred')
+        let userDetails = null;
 
         if(user === undefined){
             dispatch(action.setError("You don't have account"));
+            userDetails = JSON.parse(user)
         }
-        const userDetails = JSON.parse(user)
+        
 
         if(userDetails.email === email && userDetails.password === password){
             dispatch(action.setEmail(""))
